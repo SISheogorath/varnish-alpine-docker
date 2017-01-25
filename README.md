@@ -1,4 +1,5 @@
 # varnish-alpine-docker
+[![Build Status](https://travis-ci.org/SISheogorath/varnish-alpine-docker.svg?branch=master)](https://travis-ci.org/SISheogorath/varnish-alpine-docker)
 
 A Varnish docker container based on Alpine Linux.
 
