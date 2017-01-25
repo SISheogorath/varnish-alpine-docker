@@ -4,13 +4,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t thiagofigueiro/varnish-alpine-docker:ci .
-  - sudo service docker restart ; sleep 10
-  - docker run -i -d -p 80 -e VARNISH_BACKEND_IP=google.com -e VARNISH_BACKEND_PORT=80 thiagofigueiro/varnish-alpine-docker:ci
+  - docker build -t testing:latest .
+  - docker network create testing
+  - docker run -d --network testing -p 81:80 --name helloworld tutum/hello-world
+  - docker run --network testing --name testing -d -p 80:80 -e VARNISH_BACKEND_ADDRESS=helloworld -e VARNISH_BACKEND_PORT=80 testing:latest
 
-# TODO: add a real test
+# TODO: add a real testdd
 script:
   - docker ps -a
+  - sleep 5
+  - test $(wget -qO- http://127.0.0.1/ | wc -l) -gt 0
+  - sleep 10
+  - test $(wget -qO- http://127.0.0.1/ | wc -l) -gt 0
+  - docker logs testing
+  - test $(docker logs testing | grep MISS | wc -l) -eq 1 && test $(docker logs testing | grep HIT | wc -l) -eq 1
 
 after_script:
-  - docker rm -f $(docker ps -a -q)
+  - docker stop testing helloworld && docker rm testing helloworld && docker network rm testing

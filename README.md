@@ -1,7 +1,4 @@
 # varnish-alpine-docker
-![Build Status](https://api.travis-ci.org/thiagofigueiro/varnish-alpine-docker.svg)
-![Docker Stars](https://img.shields.io/docker/stars/thiagofigueiro/varnish-alpine-docker.svg?link=https://hub.docker.com/r/thiagofigueiro/varnish-alpine-docker/)
-![Docker Pulls](https://img.shields.io/docker/pulls/thiagofigueiro/varnish-alpine-docker.svg?link=https://hub.docker.com/r/thiagofigueiro/varnish-alpine-docker/)
 
 A Varnish docker container based on Alpine Linux.
 
@@ -15,27 +12,39 @@ A Varnish docker container based on Alpine Linux.
 Run with defaults:
 
 ```bash
-docker run -ti --name=varnish-alpine thiagofigueiro/varnish-alpine-docker
+docker run -ti --name=varnish-alpine sheogorath/varnish-alpine-docker
 ```
 
 Specify your backend configuration:
 
 ```bash
-docker run -e VARNISH_BACKEND_ADDRESS=a.b.c.d -e VARNISH_BACKEND_PORT=nn -ti --name=varnish-alpine thiagofigueiro/varnish-alpine-docker
+docker run -e VARNISH_BACKEND_ADDRESS=a.b.c.d -e VARNISH_BACKEND_PORT=nn -ti --name=varnish-alpine sheogorath/varnish-alpine-docker
 ```
 
 Build image locally:
 
 ```bash
-git clone git@github.com:thiagofigueiro/varnish-alpine-docker.git
+git clone https://github.com/SISheogorath/varnish-alpine-docker.git
 cd varnish-alpine-docker
 docker build -t varnish-alpine-docker .
 ```
 
-## Software
-* [Varnish 4.1](https://www.varnish-cache.org/docs/4.1/)
-* [Docker Alpine](https://github.com/gliderlabs/docker-alpine)
-* [Alpine Linux 3.3](http://www.alpinelinux.org/posts/Alpine-3.3.3-released.html)
+# Supported Docker versions
 
-## Acknowledgements
-* https://github.com/jacksoncage/varnish-docker
+This image is officially supported on Docker version 1.13.0.
+
+Please see [the Docker installation documentation](https://docs.docker.com/installation/) for details on how to upgrade your Docker daemon.
+
+# User Feedback
+
+## Issues
+
+If you have any problems with or questions about this image, please contact us through a [GitHub issue](https://github.com/SISheogorath/varnish-alpine-docker/issues).
+
+## Contributing
+
+You are invited to contribute new features, fixes, or updates, large or small; we are always thrilled to receive pull requests, and do our best to process them as fast as we can.
+
+## Notice
+
+This Container was build from a modified version of [thiagofigueiro/varnish-alpine-docker/](https://hub.docker.com/r/thiagofigueiro/varnish-alpine-docker/)

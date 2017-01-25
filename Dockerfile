@@ -1,6 +1,5 @@
-FROM gliderlabs/alpine:3.3
-MAINTAINER  Thiago Figueiro <thiagocsf@gmail.com>
-ENV REFRESHED_AT 2016-03-28
+FROM alpine:3.5
+MAINTAINER  Christoph (Sheogorath) Kern <sheogorath@shivering-isles.com>
 ENV VARNISH_BACKEND_ADDRESS 192.168.1.65
 ENV VARNISH_MEMORY 100M
 ENV VARNISH_BACKEND_PORT 80
