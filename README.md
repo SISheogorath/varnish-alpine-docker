@@ -3,23 +3,18 @@
 
 A Varnish docker container based on Alpine Linux.
 
-## Environment variables
-* `VARNISH_BACKEND_ADDRESS` - host/ip of your backend.  Defaults to 192.168.1.65.
-* `VARNISH_BACKEND_PORT` - TCP port of your backend.  Defaults to 80.
-* `VARNISH_MEMORY` - how much memory Varnish can use for caching. Defaults to 100M.
-
 ## Quick start
 
 Run with defaults:
 
 ```bash
-docker run -ti --name=varnish-alpine sheogorath/varnish-alpine-docker
+docker run -it --name varnish sheogorath/varnish-alpine-docker
 ```
 
 Specify your backend configuration:
 
 ```bash
-docker run -e VARNISH_BACKEND_ADDRESS=a.b.c.d -e VARNISH_BACKEND_PORT=nn -ti --name=varnish-alpine sheogorath/varnish-alpine-docker
+docker run -e VARNISH_BACKEND_ADDRESS=app -e VARNISH_BACKEND_PORT=80 -e VARNISH_MEMORY=100M -it --name varnish sheogorath/varnish-alpine-docker
 ```
 
 Build image locally:
@@ -29,6 +24,15 @@ git clone https://github.com/SISheogorath/varnish-alpine-docker.git
 cd varnish-alpine-docker
 docker build -t varnish-alpine-docker .
 ```
+
+## Environment variables
+
+|Variable                 |Default|Description                                                             |
+|-------------------------|-------|------------------------------------------------------------------------|
+|`VARNISH_BACKEND_ADDRESS`|`app`  |Host/ip of your backend (Pleae notice multiple backends are not allowed)|
+|`VARNISH_BACKEND_PORT`   |80     |TCP port of your backend                                                |
+|`VARNISH_MEMORY`         |100M   |How much memory Varnish can use for caching                             |
+
 
 # Supported Docker versions
 
@@ -48,4 +52,4 @@ You are invited to contribute new features, fixes, or updates, large or small; w
 
 ## Notice
 
-This Container was build from a modified version of [thiagofigueiro/varnish-alpine-docker/](https://hub.docker.com/r/thiagofigueiro/varnish-alpine-docker/)
+This Image was build from a modified version of [thiagofigueiro/varnish-alpine-docker](https://hub.docker.com/r/thiagofigueiro/varnish-alpine-docker/). Many thanks for your work!
