@@ -18,6 +18,7 @@ script:
   - test $(wget -qO- http://127.0.0.1/ | wc -l) -gt 0
   - docker logs testing
   - test $(docker logs testing | grep MISS | wc -l) -eq 1 && test $(docker logs testing | grep HIT | wc -l) -eq 1
+  - ./version.sh
 
 after_script:
   - docker stop testing helloworld && docker rm testing helloworld && docker network rm testing
